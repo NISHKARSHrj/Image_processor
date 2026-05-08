@@ -34,23 +34,6 @@ Backend:
 - Pillow (PIL)
 
 --------------------------------------------------
-📁 PROJECT STRUCTURE
---------------------------------------------------
-
-ImageProcessor/
-│
-├── app.py
-├── requirements.txt
-├── imageprocessorUI.html
-│
-├── static/
-│   ├── style.css
-│   ├── script.js
-│   └── favicon.png
-│
-└── README.md
-
---------------------------------------------------
 ⚙️ INSTALLATION
 --------------------------------------------------
 
