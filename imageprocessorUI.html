@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Image Processor</title>
+</head>
+<body>
+    <header>
+  <h1>Image Processor</h1>
+  
+</header>
+ 
+<div class="layout">
+  <!-- SIDEBAR -->
+  <div class="panel">
+    <div class="panel-section">
+      
+      <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileIn').click()">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12V4m0 0L8 8m4-4l4 4"/>
+        </svg>
+        <p>
+          <strong>
+            Click or drag
+          </strong> images here
+          <br>
+          PNG · JPG · WEBP · GIF
+        </p>
+      </div>
+      <input type="file" id="fileIn" multiple accept="image/*" style="display:none">
+    </div>
+ 
+    <div class="panel-section" id="queueSection" style="display:none">
+      <div class="sec-label">
+        <span id="qCount" style="color:var(--accent)">
+          0
+        </span>
+      </div>
+      <div class="file-list" id="fileList">
+
+      </div>
+    </div>
+ 
+    <div class="panel-section">
+      
+      <div class="toggle-row">
+        Sharpen
+        <label class="switch">
+          <input type="checkbox" id="chkSharpen" checked>
+          <span class="track">
+
+          </span>
+        </label>
+      </div>
+      <div class="toggle-row" style="margin-top:4px">
+        Grayscale
+        <label class="switch">
+          <input type="checkbox" id="chkGray" checked>
+          <span class="track">
+
+          </span>
+        </label>
+      </div>
+      <div class="toggle-row" style="margin-top:4px">
+        Rotate
+        <label class="switch">
+          <input type="checkbox" id="chkRotate" checked>
+          <span class="track">
+            
+          </span>
+        </label>
+      </div>
+      <div class="field">
+        <label>rotation angle</label>
+        <select id="rotAngle">
+          <option value="default">Default</option>
+          <option value="-90">−90° (clockwise)</option>
+          <option value="90">+90° (counter-CW)</option>
+          <option value="180">180°</option>
+        </select>
+      </div>
+    </div>
+ 
+    <div class="panel-section">
+      
+      <div class="field">
+        <label>format</label>
+        <select id="outFmt">
+          <option value="png">PNG (lossless)</option>
+          <option value="jpeg">JPEG</option>
+          <option value="webp">WebP</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>filename suffix</label>
+        <input type="text" id="suffix" value="_edited">
+      </div>
+    </div>
+ 
+    <div class="panel-section">
+      <button class="run-btn" id="runBtn" disabled onclick="run()">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M3 2.5l10 5.5-10 5.5V2.5z"/></svg>
+        Process Images
+      </button>
+    </div>
+  </div>
+ 
+  <!-- MAIN -->
+  <div class="main-panel">
+    <div class="panel" style="padding:16px">
+      <div class="progress-wrap" id="progressWrap">
+        <div class="bar-track"><div class="bar-fill" id="barFill"></div></div>
+        <div class="bar-label" id="barLabel">0 / 0</div>
+      </div>
+      <div id="emptyState" class="empty">
+        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="M21 15l-5-5L5 21"/>
+        </svg>
+        add images to see previews
+      </div>
+      <div class="preview-grid" id="previewGrid"></div>
+    </div>
+ 
+    <div class="log-box" id="logBox"></div>
+  </div>
+</div>
+<script src="/static/script.js"></script>
+</body>
+</html>
